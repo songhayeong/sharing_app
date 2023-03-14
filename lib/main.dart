@@ -2,7 +2,6 @@ import 'package:fboe_app_writer/pages/buy_product_page.dart';
 import 'package:fboe_app_writer/pages/home.dart';
 import 'package:fboe_app_writer/pages/login_page.dart';
 import 'package:fboe_app_writer/pages/login_page_with_sns.dart';
-import 'package:fboe_app_writer/pages/main_page.dart';
 import 'package:fboe_app_writer/pages/sell_page.dart';
 import 'package:fboe_app_writer/pages/signup_page.dart';
 import 'package:fboe_app_writer/provider/google_provider.dart';
@@ -14,6 +13,7 @@ import 'package:fboe_app_writer/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:provider/provider.dart';
+import 'package:fboe_app_writer/provider/image_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,6 +41,8 @@ class MyApp extends StatelessWidget {
             create: (BuildContext context) => UserProvider()),
         ChangeNotifierProvider(
             create: (BuildContext context) => NaverProvider()),
+        ChangeNotifierProvider(
+          create: (BuildContext context) => ImageProvider()),
       ],
       child: MaterialApp(
         title: 'Fboe Writer',

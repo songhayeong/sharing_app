@@ -1,12 +1,20 @@
+import 'package:fboe_app_writer/components/my_image_picker.dart';
+import 'package:fboe_app_writer/provider/login_platform_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:fboe_app_writer/provider/image_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_quill/flutter_quill.dart' as quill;
 
 class SellPage extends StatelessWidget {
-  const SellPage({Key? key}) : super(key: key);
+  SellPage({Key? key}) : super(key: key);
 
-  void onSave(){}
+  ImageHandlingProvider? _imageHandlingProvider;
 
   @override
   Widget build(BuildContext context) {
+    quill.QuillController _controller = quill.QuillController.basic();
+    _imageHandlingProvider =
+        Provider.of<ImageHandlingProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -24,7 +32,7 @@ class SellPage extends StatelessWidget {
         ),
         actions: [
           TextButton(
-            onPressed: onSave,
+            onPressed: () {},
             child: const Text("임시저장"),
           ),
         ],
@@ -252,47 +260,7 @@ class SellPage extends StatelessWidget {
                 ),
               ],
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    width: 140,
-                    height: 140,
-                    color: const Color(0xffd9d9d9),
-                    child: const Center(
-                      child: Icon(
-                        Icons.add,
-                        size: 40,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    width: 140,
-                    height: 140,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('asset/image/puppy.jpg'))),
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    width: 140,
-                    height: 140,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('asset/image/hayeong.png'))),
-                  ),
-                ],
-              ),
-            ),
+            MyImagePicker(),
             const SizedBox(
               height: 5,
             ),
@@ -324,17 +292,42 @@ class SellPage extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            Container(
-              height: 100,
-              width: 1000,
-              color: const Color(0xffffc909),
-              child: const Center(
-                child: Text(
-                  "세상에 알리기",
-                  style: TextStyle(fontSize: 30),
+            GestureDetector(
+              onTap: () {
+                _imageHandlingProvider!.uploadImage();
+                // 이미지 업로더 메서드 이미지 저장되는거는 회사에서 확인해야될듯
+              },
+              child: Container(
+                height: 100,
+                width: 1000,
+                color: const Color(0xffffc909),
+                child: const Center(
+                  child: Text(
+                    "세상에 알리기",
+                    style: TextStyle(fontSize: 30),
+                  ),
                 ),
               ),
-            )
+            ),
+            quill.QuillToolbar.basic(controller: _controller),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.black
+                ),
+                child: quill.QuillEditor(
+                  controller: _controller,
+                  scrollable: true,
+                  scrollController: ScrollController(),
+                  focusNode: FocusNode(),
+                  padding: EdgeInsets.all(5),
+                  autoFocus: false,
+                  readOnly: false,
+                  expands: false,
+                  placeholder: "본문에 내용을 입력하세요",
+                ),
+              ),
+            ),
           ],
         ),
       ),

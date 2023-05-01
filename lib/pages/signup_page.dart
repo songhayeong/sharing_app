@@ -12,23 +12,6 @@ class Signup extends StatelessWidget {
 
   UserProvider? _userProvider;
 
-  // Future<void> login(String email, password) async {
-  //   try {
-  //     Response response = await post(Uri.parse(''),
-  //         body: {'email': email, 'password': password});
-  //
-  //     if (response.statusCode == 200) {
-  //       var data = jsonDecode(response.body.toString());
-  //       print(data['token']);
-  //       print('account created successfully');
-  //     } else {
-  //       print('failed');
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     _userProvider = Provider.of<UserProvider>(context);
@@ -83,14 +66,14 @@ class Signup extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, '/loginEmail');
                 },
-                child: Center(
+                child: const Center(
                   child: Text('if you have account? please login!'),
                 )),
           ],

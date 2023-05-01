@@ -23,6 +23,9 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("my page appbar"),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

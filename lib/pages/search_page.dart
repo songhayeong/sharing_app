@@ -80,40 +80,45 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    border: InputBorder.none,
-                    fillColor: Colors.white70,
-                    filled: true,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("검색 페이지"),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search',
+                      border: InputBorder.none,
+                      fillColor: Colors.white70,
+                      filled: true,
+                    ),
                   ),
                 ),
-              ),
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.search),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.shopping_cart_outlined),
-                  ),
-                ],
-              ),
-            ],
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.search),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.shopping_cart_outlined),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-        _tabMenu(),
-        _categoryView(),
-      ],
+          _tabMenu(),
+          _categoryView(),
+        ],
+      ),
     );
   }
 }

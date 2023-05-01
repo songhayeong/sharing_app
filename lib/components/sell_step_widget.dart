@@ -8,10 +8,10 @@ class FirstStepWidget extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
-          decoration: InputDecoration(labelText: '이름'),
+          decoration: InputDecoration(labelText: '항목1'),
         ),
         TextFormField(
-          decoration: InputDecoration(labelText: '이메일'),
+          decoration: InputDecoration(labelText: '항목2'),
         ),
       ],
     );
@@ -26,10 +26,10 @@ class SecondStepWidget extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
-          decoration: InputDecoration(labelText: '비밀번호'),
+          decoration: InputDecoration(labelText: '항목3'),
         ),
         TextFormField(
-          decoration: InputDecoration(labelText: '비밀번호 확인'),
+          decoration: InputDecoration(labelText: '항목4'),
         ),
       ],
     );

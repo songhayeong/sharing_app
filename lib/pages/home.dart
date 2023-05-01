@@ -1,19 +1,17 @@
 import 'package:fboe_app_writer/components/my_drawer.dart';
 import 'package:fboe_app_writer/login_platform.dart';
 import 'package:fboe_app_writer/pages/main_page.dart';
+import 'package:fboe_app_writer/pages/main_page_test.dart';
 import 'package:fboe_app_writer/pages/mypage.dart';
 import 'package:fboe_app_writer/pages/search_page.dart';
 import 'package:fboe_app_writer/pages/sell_page.dart';
+import 'package:fboe_app_writer/pages/sell_sample_page.dart';
 import 'package:fboe_app_writer/provider/google_provider.dart';
 import 'package:fboe_app_writer/provider/kakao_provider.dart';
 import 'package:fboe_app_writer/provider/login_platform_provider.dart';
 import 'package:fboe_app_writer/provider/naver_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
-import '../components/kakao_login_button.dart';
-import '../provider/login_platform_provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -26,8 +24,10 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
   bool _isLogined = false;
   static List<Widget> pages = <Widget>[
-    const MainPage(),
-    const SellPage(),
+    //const MainPage(), 원래 메인페이지
+    MainPageTest(),
+    Container(), // 작품페이지
+    SellSamplePage(), // 작품등록페이지 혹은 등록 프로세스
     SearchPage(),
     const MyPage()
   ];
@@ -76,85 +76,96 @@ class _HomeState extends State<Home> {
         break;
     }
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 1,
-        centerTitle: false,
-        title: Image.asset(
-          'asset/image/designer.png',
-          fit: BoxFit.cover,
-        ),
-        actions: [
-          Row(
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.search,
-                  color: Colors.black,
-                ),
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/buy');
-                },
-                icon: const Icon(
-                  Icons.shopping_cart,
-                  color: Colors.black,
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.notifications,
-                  color: Colors.black,
-                ),
-              ),
-              Consumer<LoginPlatformProvider>(
-                builder: (context, loginPlatform, child) {
-                  return IconButton(
-                    onPressed: () {
-                      LoginPlatformProvider.loginPlatform == LoginPlatform.none
-                          ? Navigator.pushNamed(context, '/login')
-                          : Scaffold.of(context).openEndDrawer();
-                      // Provider.of<LoginPlatformProvider>(context, listen: false).loginPlatforms ==
-                      //     LoginPlatform.none
-                      // Navigator.pushNamed(context, '/login') : Scaffold.of(
-                      //     context).openEndDrawer();
-                    },
-                    // icon: LoginPlatformProvider.loginPlatform !=
-                    //     LoginPlatform.none
-                    icon: LoginPlatformProvider.loginPlatform !=
-                            LoginPlatform.none
-                        ? Container(
-                            width: 30,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.black,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Image.network(
-                              profileUrl!,
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        : const Icon(
-                            Icons.person,
-                            color: Colors.black,
-                          ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 1,
+      //   centerTitle: false,
+      //   title: GestureDetector(
+      //     onTap: () {
+      //       Navigator.pushReplacementNamed(context, '/main');
+      //     },
+      //     child: Image.asset(
+      //       'asset/image/designer.png',
+      //       fit: BoxFit.cover,
+      //     ),
+      //   ),
+      //   actions: [
+      //     Row(
+      //       children: [
+      //         IconButton(
+      //           onPressed: () {},
+      //           icon: const Icon(
+      //             Icons.search,
+      //             color: Colors.black,
+      //           ),
+      //         ),
+      //         IconButton(
+      //           onPressed: () {
+      //             _kakaoProvider!.testing();
+      //           },
+      //           icon: const Icon(
+      //             Icons.add,
+      //             color: Colors.black,
+      //           ),
+      //         ),
+      //         IconButton(
+      //           onPressed: () {
+      //             Navigator.pushNamed(
+      //                 context, '/buytest'); //sellStep 에서는 단계별로 하고
+      //           },
+      //           icon: const Icon(
+      //             Icons.shopping_cart,
+      //             color: Colors.black,
+      //           ),
+      //         ),
+      //         Consumer<LoginPlatformProvider>(
+      //           builder: (context, loginPlatform, child) {
+      //             return IconButton(
+      //               onPressed: () {
+      //                 LoginPlatformProvider.loginPlatform == LoginPlatform.none
+      //                     ? Navigator.pushNamed(context, '/login')
+      //                     : Scaffold.of(context).openEndDrawer();
+      //                 // Provider.of<LoginPlatformProvider>(context, listen: false).loginPlatforms ==
+      //                 //     LoginPlatform.none
+      //                 // Navigator.pushNamed(context, '/login') : Scaffold.of(
+      //                 //     context).openEndDrawer();
+      //               },
+      //               // icon: LoginPlatformProvider.loginPlatform !=
+      //               //     LoginPlatform.none
+      //               icon: LoginPlatformProvider.loginPlatform !=
+      //                       LoginPlatform.none
+      //                   ? Container(
+      //                       width: 30,
+      //                       height: 30,
+      //                       decoration: BoxDecoration(
+      //                         border: Border.all(
+      //                           color: Colors.black,
+      //                           width: 2,
+      //                         ),
+      //                         borderRadius: BorderRadius.circular(10),
+      //                       ),
+      //                       child: Image.network(
+      //                         profileUrl!,
+      //                         fit: BoxFit.cover,
+      //                       ),
+      //                     )
+      //                   : const Icon(
+      //                       Icons.person,
+      //                       color: Colors.black,
+      //                     ),
+      //             );
+      //           },
+      //         ),
+      //       ],
+      //     ),
+      //   ],
+      // ),
       endDrawer: MyDrawer(),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         // selectedItemColor: Colors.black,
@@ -162,7 +173,7 @@ class _HomeState extends State<Home> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
+              Icons.home_outlined,
               color: Colors.black,
               size: 40,
             ),
@@ -170,11 +181,19 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.people,
+              Icons.people_alt_outlined,
               color: Colors.black,
               size: 40,
             ),
             label: "작품",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add_circle_outline_rounded,
+              color: Colors.black,
+              size: 40,
+            ),
+            label: "등록",
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -186,7 +205,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person,
+              Icons.person_outline,
               color: Colors.black,
               size: 40,
             ),

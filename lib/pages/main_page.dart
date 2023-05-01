@@ -10,66 +10,68 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
         child: Column(
           children: [
             Container(
-              height: 230,
+              height: 300,
               width: 1100,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('asset/image/mainpage.png'),
+                  fit: BoxFit.cover,
                   //fit: BoxFit.cover
                 ),
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: const [
-                    MiddleButton(
-                      path: 'asset/image/icon1.png',
-                      value: 0xffdaca92,
-                    ),
-                    SizedBox(height: 5,),
-                    Text("아날로그",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                  ],
-                ),
-                Column(
-                  children: const [
-                    MiddleButton(
-                      path: 'asset/image/icon2.png',
-                      value: 0xffd6e6fe,
-                    ),
-                    SizedBox(height: 5,),
-                    Text("디지털",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                  ],
-                ),
-                Column(
-                  children: const [
-                    MiddleButton(
-                      path: 'asset/image/crown.png',
-                      value: 0xffffc989,
-                    ),
-                    SizedBox(height: 5,),
-                    Text("HOT/NEW",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                  ],
-                ),
-                Column(
-                  children: const [
-                    MiddleButton(
-                      path: 'asset/image/Vector.png',
-                      value: 0xffe5ddbe,
-                    ),
-                    SizedBox(height: 5,),
-                    Text("GOODS",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                  ],
-                ),
-              ],
-            ),
+            // const SizedBox(
+            //   height: 30,
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   children: [
+            //     Column(
+            //       children: const [
+            //         MiddleButton(
+            //           path: 'asset/image/icon1.png',
+            //           value: 0xffdaca92,
+            //         ),
+            //         SizedBox(height: 5,),
+            //         Text("아날로그",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            //       ],
+            //     ),
+            //     Column(
+            //       children: const [
+            //         MiddleButton(
+            //           path: 'asset/image/icon2.png',
+            //           value: 0xffd6e6fe,
+            //         ),
+            //         SizedBox(height: 5,),
+            //         Text("디지털",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            //       ],
+            //     ),
+            //     Column(
+            //       children: const [
+            //         MiddleButton(
+            //           path: 'asset/image/crown.png',
+            //           value: 0xffffc989,
+            //         ),
+            //         SizedBox(height: 5,),
+            //         Text("HOT/NEW",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            //       ],
+            //     ),
+            //     Column(
+            //       children: const [
+            //         MiddleButton(
+            //           path: 'asset/image/Vector.png',
+            //           value: 0xffe5ddbe,
+            //         ),
+            //         SizedBox(height: 5,),
+            //         Text("GOODS",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            //       ],
+            //     ),
+            //   ],
+            // ),
             const SizedBox(
               height: 30,
             ),

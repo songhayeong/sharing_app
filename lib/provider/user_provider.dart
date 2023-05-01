@@ -6,7 +6,10 @@ import 'dart:convert';
 class UserProvider extends ChangeNotifier {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController nicknameController = TextEditingController();
+  TextEditingController infoController = TextEditingController();
+  TextEditingController emailUpdateController = TextEditingController();
   void signup(String email, password) async {
     Map<String, dynamic> data = {'email': email, 'password': password};
 

@@ -37,6 +37,9 @@ dependencies:
   cached_network_image: ^3.2.3
   dio: ^4.0.6
   image_picker: ^0.8.7
+  dotted_border: ^2.0.0+3
+  flutter_quill: ^5.0.2
+  sqflite: ^2.2.6
 
 dev_dependencies:
   flutter_test:

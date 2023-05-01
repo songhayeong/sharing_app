@@ -111,6 +111,11 @@ class MyDrawer extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.local_shipping_outlined),
+            title: const Text("배송지 관리"),
+            onTap: () {}, //주소등록관리 ui로 넘어가게끔,,,,
+          ),
           LoginPlatformProvider.loginPlatform != LoginPlatform.none
               ? ListTile(
                   leading: const Icon(Icons.logout),

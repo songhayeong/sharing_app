@@ -3,7 +3,6 @@ import 'package:fboe_app_writer/provider/login_platform_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:fboe_app_writer/provider/image_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_quill/flutter_quill.dart' as quill;
 
 class SellPage extends StatelessWidget {
   SellPage({Key? key}) : super(key: key);
@@ -12,7 +11,6 @@ class SellPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    quill.QuillController _controller = quill.QuillController.basic();
     _imageHandlingProvider =
         Provider.of<ImageHandlingProvider>(context, listen: false);
     return Scaffold(
@@ -309,25 +307,24 @@ class SellPage extends StatelessWidget {
                 ),
               ),
             ),
-            quill.QuillToolbar.basic(controller: _controller),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.black
-                ),
-                child: quill.QuillEditor(
-                  controller: _controller,
-                  scrollable: true,
-                  scrollController: ScrollController(),
-                  focusNode: FocusNode(),
-                  padding: EdgeInsets.all(5),
-                  autoFocus: false,
-                  readOnly: false,
-                  expands: false,
-                  placeholder: "본문에 내용을 입력하세요",
-                ),
-              ),
-            ),
+            // Expanded(
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //       color: Colors.black
+            //     ),
+            //     child: quill.QuillEditor(
+            //       controller: _controller,
+            //       scrollable: true,
+            //       scrollController: ScrollController(),
+            //       focusNode: FocusNode(),
+            //       padding: EdgeInsets.all(5),
+            //       autoFocus: false,
+            //       readOnly: false,
+            //       expands: false,
+            //       placeholder: "본문에 내용을 입력하세요",
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

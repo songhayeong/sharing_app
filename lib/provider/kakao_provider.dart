@@ -39,7 +39,7 @@ class KakaoProvider extends ChangeNotifier {
   Future<void> _getAccessTokenAndUserInfo(String code) async {
     try {
       final url_test =
-      Uri.parse('http://192.168.123.2:6700/kakao_login?code=$code');
+      Uri.parse('http://192.168.123.2:6700/kakao_login?code=$code'); // 진짜 생각없이 코딩한 부분 아마 와이파이 포트 번호일 것으로 판단.
       final response = await http.get(
           url_test);
       if (response.statusCode == 200) {
@@ -154,7 +154,7 @@ class KakaoProvider extends ChangeNotifier {
   }
 
   void logOut() async {
-    loginPlatform = LoginPlatform.none;
+    loginPlatform = LoginPlatform.none;  // 로그아웃했다면 토큰 파기도 생각해야 할 요소 중 하나이지않을까 ? 이렇게 상태만 바꿀 것이 아닐것!!
     notifyListeners();
   }
 

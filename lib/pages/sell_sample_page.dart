@@ -4,7 +4,6 @@ import 'package:fboe_app_writer/provider/image_provider.dart';
 import 'package:fboe_app_writer/provider/sale_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_quill/flutter_quill.dart' as quill;
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 
@@ -21,7 +20,7 @@ class _SellSamplePageState extends State<SellSamplePage> {
   SaleProvider? _saleProvider;
   ImageHandlingProvider? _imageHandlingProvider;
 
-  final quill.QuillController _controller = quill.QuillController.basic();
+  // final quill.QuillController _controller = quill.QuillController.basic();
 
   @override
   Widget build(BuildContext context) {
@@ -143,19 +142,19 @@ class _SellSamplePageState extends State<SellSamplePage> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 0),
-                      child: quill.QuillToolbar.basic(
-                        controller: _controller,
-                        fontSizeValues: const {
-                          'Small': '7',
-                          'Medium': '20.5',
-                          'Large': '40'
-                        },
-                        showAlignmentButtons: false,
-                        //onImagePickCallback: ,
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 0),
+                    //   child: quill.QuillToolbar.basic(
+                    //     controller: _controller,
+                    //     fontSizeValues: const {
+                    //       'Small': '7',
+                    //       'Medium': '20.5',
+                    //       'Large': '40'
+                    //     },
+                    //     showAlignmentButtons: false,
+                    //     //onImagePickCallback: ,
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
@@ -173,10 +172,10 @@ class _SellSamplePageState extends State<SellSamplePage> {
                               blurRadius: 0.0,
                               spreadRadius: 0.0)
                         ]),
-                        child: quill.QuillEditor.basic(
-                          controller: _controller,
-                          readOnly: false,
-                        ),
+                        // child: quill.QuillEditor.basic(
+                        //   controller: _controller,
+                        //   readOnly: false,
+                        // ),
                       ),
                     )
                   ],

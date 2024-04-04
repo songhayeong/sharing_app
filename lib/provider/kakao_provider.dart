@@ -7,6 +7,9 @@ import 'package:http/http.dart' as http;
 import '../login_platform.dart';
 import '../model/user_model.dart';
 
+// 이 코드의 문제점 Provider 안에 모든 기능을 다 넣고 state를 분리 하지 못함. 즉 Domain layer에서 해야할 행위들이
+// provider 내에 속해 있음 즉 adapter랑 usecase가 섞여있어 코드 분리를 이뤄내지 못함. 이런식으로 했다간 추가 feature작업이 매우 어려워질것임.
+
 class KakaoProvider extends ChangeNotifier {
   LoginPlatform loginPlatform = LoginPlatform.none;
   bool isKakaoLogined = false;
